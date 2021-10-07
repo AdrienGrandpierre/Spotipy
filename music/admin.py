@@ -9,12 +9,16 @@ class SongAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'artist', 'duration', 'created_at', 'status', 'file')
     list_filter = ('status', 'artist__name')
     search_fields = ['name']
+    autocomplete_fields = ['artist']
 
 
 @admin.register(Artist)
 class ArtistAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'genre')
+    list_filter = ('genre__name',)
     search_fields = ['name']
+    autocomplete_fields = ['genre']
+
 
 
 @admin.register(Genre)
